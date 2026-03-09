@@ -1,0 +1,48 @@
+[gd_scene load_steps=2 format=3 uid="uid://b9sleep"]
+
+[ext_resource type="Script" path="res://scripts/SleepScene.gd" id="1_sleep"]
+
+[node name="SleepScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_sleep")
+
+[node name="BG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.03, 0.04, 0.09, 1.0)
+modulate = Color(1, 1, 1, 0)
+
+[node name="AccentTop" type="ColorRect" parent="."]
+layout_mode = 1
+anchor_right = 1.0
+offset_bottom = 3.0
+color = Color(0.18, 0.65, 1.0, 1.0)
+modulate = Color(1, 1, 1, 0)
+
+[node name="LinesContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 72.0
+offset_top = 52.0
+offset_right = -72.0
+offset_bottom = -80.0
+theme_override_constants/separation = 14
+
+[node name="LblContinue" type="Label" parent="."]
+layout_mode = 1
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -56.0
+offset_left = 72.0
+offset_right = -72.0
+horizontal_alignment = 2
+text = "[ Click or press any key to continue ]"
+theme_override_colors/font_color = Color(0.5, 0.5, 0.5, 0.0)
+theme_override_font_sizes/font_size = 15

@@ -1,0 +1,610 @@
+[gd_scene load_steps=9 format=3 uid="uid://b4maingame"]
+
+[ext_resource type="Script" path="res://scripts/MainGame.gd" id="1_maingame"]
+[ext_resource type="Script" path="res://scripts/Player.gd" id="2_player"]
+[ext_resource type="Script" path="res://scripts/NPC.gd" id="3_npc"]
+
+[sub_resource type="RectangleShape2D" id="ShapePlayer"]
+size = Vector2(20.0, 12.0)
+
+[sub_resource type="RectangleShape2D" id="ShapeNPCBody"]
+size = Vector2(20.0, 12.0)
+
+[sub_resource type="RectangleShape2D" id="ShapeNPCArea"]
+size = Vector2(72.0, 56.0)
+
+[sub_resource type="RectangleShape2D" id="ShapeHotelBody"]
+size = Vector2(160.0, 80.0)
+
+[sub_resource type="RectangleShape2D" id="ShapeHotelArea"]
+size = Vector2(210.0, 130.0)
+
+[node name="MainGame" type="Node2D"]
+script = ExtResource("1_maingame")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(640, 390)
+zoom = Vector2(2.0, 2.0)
+position_smoothing_enabled = true
+position_smoothing_speed = 6.0
+limit_left = 0
+limit_right = 5120
+limit_top = 0
+limit_bottom = 720
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="Sky" type="ColorRect" parent="World"]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 5120.0
+offset_bottom = 310.0
+color = Color(0.04, 0.04, 0.09, 1.0)
+
+[node name="MidGround" type="ColorRect" parent="World"]
+offset_left = 0.0
+offset_top = 310.0
+offset_right = 5120.0
+offset_bottom = 420.0
+color = Color(0.14, 0.12, 0.18, 1.0)
+
+[node name="Ground" type="ColorRect" parent="World"]
+offset_left = 0.0
+offset_top = 420.0
+offset_right = 5120.0
+offset_bottom = 540.0
+color = Color(0.20, 0.18, 0.24, 1.0)
+
+[node name="Road" type="ColorRect" parent="World"]
+offset_left = 0.0
+offset_top = 540.0
+offset_right = 5120.0
+offset_bottom = 640.0
+color = Color(0.10, 0.10, 0.13, 1.0)
+
+[node name="Sidewalk" type="ColorRect" parent="World"]
+offset_left = 0.0
+offset_top = 640.0
+offset_right = 5120.0
+offset_bottom = 720.0
+color = Color(0.18, 0.16, 0.22, 1.0)
+
+[node name="RoadLines" type="ColorRect" parent="World"]
+offset_left = 0.0
+offset_top = 586.0
+offset_right = 5120.0
+offset_bottom = 594.0
+color = Color(0.5, 0.45, 0.1, 0.45)
+
+[node name="HotelBuilding" type="StaticBody2D" parent="World"]
+position = Vector2(520.0, 380.0)
+collision_layer = 1
+collision_mask = 0
+
+[node name="HotelBG" type="ColorRect" parent="World/HotelBuilding"]
+offset_left = -100.0
+offset_top = -160.0
+offset_right = 100.0
+offset_bottom = 40.0
+color = Color(0.10, 0.10, 0.18, 1.0)
+
+[node name="HotelAccent" type="ColorRect" parent="World/HotelBuilding"]
+offset_left = -100.0
+offset_top = -162.0
+offset_right = 100.0
+offset_bottom = -154.0
+color = Color(0.0, 0.78, 0.95, 1.0)
+
+[node name="HotelSign" type="Label" parent="World/HotelBuilding"]
+offset_left = -80.0
+offset_top = -128.0
+offset_right = 80.0
+offset_bottom = -88.0
+horizontal_alignment = 1
+text = "HOTEL"
+theme_override_colors/font_color = Color(0.0, 0.96, 0.88, 1.0)
+theme_override_font_sizes/font_size = 28
+
+[node name="HotelSubSign" type="Label" parent="World/HotelBuilding"]
+offset_left = -80.0
+offset_top = -84.0
+offset_right = 80.0
+offset_bottom = -66.0
+horizontal_alignment = 1
+text = "REST · RECOVER"
+theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1.0)
+theme_override_font_sizes/font_size = 10
+
+[node name="HotelBody" type="CollisionShape2D" parent="World/HotelBuilding"]
+shape = SubResource("ShapeHotelBody")
+
+[node name="HotelArea" type="Area2D" parent="World/HotelBuilding"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="HotelAreaShape" type="CollisionShape2D" parent="World/HotelBuilding/HotelArea"]
+shape = SubResource("ShapeHotelArea")
+
+[node name="HotelHint" type="Label" parent="World/HotelBuilding"]
+offset_left = -110.0
+offset_top = -182.0
+offset_right = 110.0
+offset_bottom = -164.0
+visible = false
+horizontal_alignment = 1
+text = "[ E ] Rest & end day"
+theme_override_colors/font_color = Color(0.9, 1.0, 0.4, 1.0)
+theme_override_font_sizes/font_size = 12
+
+[node name="Building2" type="ColorRect" parent="World"]
+offset_left = 1100.0
+offset_top = 220.0
+offset_right = 1300.0
+offset_bottom = 420.0
+color = Color(0.08, 0.08, 0.14, 1.0)
+
+[node name="Bld2Accent" type="ColorRect" parent="World"]
+offset_left = 1100.0
+offset_top = 218.0
+offset_right = 1300.0
+offset_bottom = 225.0
+color = Color(1.0, 0.3, 0.1, 1.0)
+
+[node name="Bld2Sign" type="Label" parent="World"]
+offset_left = 1110.0
+offset_top = 250.0
+offset_right = 1290.0
+offset_bottom = 280.0
+horizontal_alignment = 1
+text = "NEON BAZAAR"
+theme_override_colors/font_color = Color(1.0, 0.4, 0.1, 1.0)
+theme_override_font_sizes/font_size = 12
+
+[node name="Building3" type="ColorRect" parent="World"]
+offset_left = 2000.0
+offset_top = 180.0
+offset_right = 2240.0
+offset_bottom = 420.0
+color = Color(0.06, 0.10, 0.16, 1.0)
+
+[node name="Bld3Accent" type="ColorRect" parent="World"]
+offset_left = 2000.0
+offset_top = 178.0
+offset_right = 2240.0
+offset_bottom = 185.0
+color = Color(0.3, 0.0, 0.9, 1.0)
+
+[node name="Bld3Sign" type="Label" parent="World"]
+offset_left = 2010.0
+offset_top = 210.0
+offset_right = 2230.0
+offset_bottom = 240.0
+horizontal_alignment = 1
+text = "SECTOR 7 OPS"
+theme_override_colors/font_color = Color(0.6, 0.2, 1.0, 1.0)
+theme_override_font_sizes/font_size = 12
+
+[node name="Building4" type="ColorRect" parent="World"]
+offset_left = 3100.0
+offset_top = 200.0
+offset_right = 3380.0
+offset_bottom = 420.0
+color = Color(0.09, 0.09, 0.10, 1.0)
+
+[node name="Bld4Accent" type="ColorRect" parent="World"]
+offset_left = 3100.0
+offset_top = 198.0
+offset_right = 3380.0
+offset_bottom = 205.0
+color = Color(0.0, 0.9, 0.4, 1.0)
+
+[node name="Bld4Sign" type="Label" parent="World"]
+offset_left = 3110.0
+offset_top = 230.0
+offset_right = 3370.0
+offset_bottom = 260.0
+horizontal_alignment = 1
+text = "GHOST MARKET"
+theme_override_colors/font_color = Color(0.1, 1.0, 0.5, 1.0)
+theme_override_font_sizes/font_size = 12
+
+[node name="Building5" type="ColorRect" parent="World"]
+offset_left = 4200.0
+offset_top = 160.0
+offset_right = 4500.0
+offset_bottom = 420.0
+color = Color(0.07, 0.06, 0.13, 1.0)
+
+[node name="Bld5Accent" type="ColorRect" parent="World"]
+offset_left = 4200.0
+offset_top = 158.0
+offset_right = 4500.0
+offset_bottom = 165.0
+color = Color(0.9, 0.7, 0.0, 1.0)
+
+[node name="Bld5Sign" type="Label" parent="World"]
+offset_left = 4210.0
+offset_top = 195.0
+offset_right = 4490.0
+offset_bottom = 225.0
+horizontal_alignment = 1
+text = "UPPER DISTRICT"
+theme_override_colors/font_color = Color(1.0, 0.85, 0.1, 1.0)
+theme_override_font_sizes/font_size = 12
+
+[node name="NPC1" type="CharacterBody2D" parent="World"]
+position = Vector2(280.0, 400.0)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("3_npc")
+npc_id = 1
+npc_display_name = "Shadow Broker"
+
+[node name="NPCRect" type="ColorRect" parent="World/NPC1"]
+offset_left = -14.0
+offset_top = -40.0
+offset_right = 14.0
+offset_bottom = 10.0
+color = Color(0.7, 0.15, 0.15, 1.0)
+
+[node name="NPCSprite" type="Sprite2D" parent="World/NPC1"]
+texture_filter = 1
+
+[node name="NPCBody" type="CollisionShape2D" parent="World/NPC1"]
+shape = SubResource("ShapeNPCBody")
+
+[node name="InteractArea" type="Area2D" parent="World/NPC1"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="InteractAreaShape" type="CollisionShape2D" parent="World/NPC1/InteractArea"]
+shape = SubResource("ShapeNPCArea")
+
+[node name="LblNPCName" type="Label" parent="World/NPC1"]
+offset_left = -60.0
+offset_top = -64.0
+offset_right = 60.0
+offset_bottom = -46.0
+horizontal_alignment = 1
+text = "Shadow Broker"
+theme_override_colors/font_color = Color(1.0, 0.8, 0.2, 1.0)
+theme_override_font_sizes/font_size = 11
+
+[node name="HintLabel" type="Label" parent="World/NPC1"]
+offset_left = -70.0
+offset_top = -82.0
+offset_right = 70.0
+offset_bottom = -66.0
+visible = false
+horizontal_alignment = 1
+text = "[ E ] Talk"
+theme_override_colors/font_color = Color(0.9, 1.0, 0.4, 1.0)
+theme_override_font_sizes/font_size = 11
+
+[node name="NPC2" type="CharacterBody2D" parent="World"]
+position = Vector2(1200.0, 400.0)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("3_npc")
+npc_id = 2
+npc_display_name = "Street Boss"
+
+[node name="NPCRect" type="ColorRect" parent="World/NPC2"]
+offset_left = -14.0
+offset_top = -40.0
+offset_right = 14.0
+offset_bottom = 10.0
+color = Color(0.15, 0.15, 0.7, 1.0)
+
+[node name="NPCSprite" type="Sprite2D" parent="World/NPC2"]
+texture_filter = 1
+
+[node name="NPCBody" type="CollisionShape2D" parent="World/NPC2"]
+shape = SubResource("ShapeNPCBody")
+
+[node name="InteractArea" type="Area2D" parent="World/NPC2"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="InteractAreaShape" type="CollisionShape2D" parent="World/NPC2/InteractArea"]
+shape = SubResource("ShapeNPCArea")
+
+[node name="LblNPCName" type="Label" parent="World/NPC2"]
+offset_left = -60.0
+offset_top = -64.0
+offset_right = 60.0
+offset_bottom = -46.0
+horizontal_alignment = 1
+text = "Street Boss"
+theme_override_colors/font_color = Color(1.0, 0.8, 0.2, 1.0)
+theme_override_font_sizes/font_size = 11
+
+[node name="HintLabel" type="Label" parent="World/NPC2"]
+offset_left = -70.0
+offset_top = -82.0
+offset_right = 70.0
+offset_bottom = -66.0
+visible = false
+horizontal_alignment = 1
+text = "[ E ] Talk"
+theme_override_colors/font_color = Color(0.9, 1.0, 0.4, 1.0)
+theme_override_font_sizes/font_size = 11
+
+[node name="NPC3" type="CharacterBody2D" parent="World"]
+position = Vector2(2100.0, 400.0)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("3_npc")
+npc_id = 3
+npc_display_name = "Tech Dealer"
+
+[node name="NPCRect" type="ColorRect" parent="World/NPC3"]
+offset_left = -14.0
+offset_top = -40.0
+offset_right = 14.0
+offset_bottom = 10.0
+color = Color(0.15, 0.5, 0.15, 1.0)
+
+[node name="NPCSprite" type="Sprite2D" parent="World/NPC3"]
+texture_filter = 1
+
+[node name="NPCBody" type="CollisionShape2D" parent="World/NPC3"]
+shape = SubResource("ShapeNPCBody")
+
+[node name="InteractArea" type="Area2D" parent="World/NPC3"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="InteractAreaShape" type="CollisionShape2D" parent="World/NPC3/InteractArea"]
+shape = SubResource("ShapeNPCArea")
+
+[node name="LblNPCName" type="Label" parent="World/NPC3"]
+offset_left = -60.0
+offset_top = -64.0
+offset_right = 60.0
+offset_bottom = -46.0
+horizontal_alignment = 1
+text = "Tech Dealer"
+theme_override_colors/font_color = Color(1.0, 0.8, 0.2, 1.0)
+theme_override_font_sizes/font_size = 11
+
+[node name="HintLabel" type="Label" parent="World/NPC3"]
+offset_left = -70.0
+offset_top = -82.0
+offset_right = 70.0
+offset_bottom = -66.0
+visible = false
+horizontal_alignment = 1
+text = "[ E ] Talk"
+theme_override_colors/font_color = Color(0.9, 1.0, 0.4, 1.0)
+theme_override_font_sizes/font_size = 11
+
+[node name="NPC4" type="CharacterBody2D" parent="World"]
+position = Vector2(3200.0, 400.0)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("3_npc")
+npc_id = 4
+npc_display_name = "Ghost Runner"
+
+[node name="NPCRect" type="ColorRect" parent="World/NPC4"]
+offset_left = -14.0
+offset_top = -40.0
+offset_right = 14.0
+offset_bottom = 10.0
+color = Color(0.4, 0.0, 0.6, 1.0)
+
+[node name="NPCSprite" type="Sprite2D" parent="World/NPC4"]
+texture_filter = 1
+
+[node name="NPCBody" type="CollisionShape2D" parent="World/NPC4"]
+shape = SubResource("ShapeNPCBody")
+
+[node name="InteractArea" type="Area2D" parent="World/NPC4"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="InteractAreaShape" type="CollisionShape2D" parent="World/NPC4/InteractArea"]
+shape = SubResource("ShapeNPCArea")
+
+[node name="LblNPCName" type="Label" parent="World/NPC4"]
+offset_left = -60.0
+offset_top = -64.0
+offset_right = 60.0
+offset_bottom = -46.0
+horizontal_alignment = 1
+text = "Ghost Runner"
+theme_override_colors/font_color = Color(1.0, 0.8, 0.2, 1.0)
+theme_override_font_sizes/font_size = 11
+
+[node name="HintLabel" type="Label" parent="World/NPC4"]
+offset_left = -70.0
+offset_top = -82.0
+offset_right = 70.0
+offset_bottom = -66.0
+visible = false
+horizontal_alignment = 1
+text = "[ E ] Talk"
+theme_override_colors/font_color = Color(0.9, 1.0, 0.4, 1.0)
+theme_override_font_sizes/font_size = 11
+
+[node name="NPC5" type="CharacterBody2D" parent="World"]
+position = Vector2(4350.0, 400.0)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("3_npc")
+npc_id = 5
+npc_display_name = "Upper Fixer"
+
+[node name="NPCRect" type="ColorRect" parent="World/NPC5"]
+offset_left = -14.0
+offset_top = -40.0
+offset_right = 14.0
+offset_bottom = 10.0
+color = Color(0.7, 0.6, 0.0, 1.0)
+
+[node name="NPCSprite" type="Sprite2D" parent="World/NPC5"]
+texture_filter = 1
+
+[node name="NPCBody" type="CollisionShape2D" parent="World/NPC5"]
+shape = SubResource("ShapeNPCBody")
+
+[node name="InteractArea" type="Area2D" parent="World/NPC5"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="InteractAreaShape" type="CollisionShape2D" parent="World/NPC5/InteractArea"]
+shape = SubResource("ShapeNPCArea")
+
+[node name="LblNPCName" type="Label" parent="World/NPC5"]
+offset_left = -60.0
+offset_top = -64.0
+offset_right = 60.0
+offset_bottom = -46.0
+horizontal_alignment = 1
+text = "Upper Fixer"
+theme_override_colors/font_color = Color(1.0, 0.8, 0.2, 1.0)
+theme_override_font_sizes/font_size = 11
+
+[node name="HintLabel" type="Label" parent="World/NPC5"]
+offset_left = -70.0
+offset_top = -82.0
+offset_right = 70.0
+offset_bottom = -66.0
+visible = false
+horizontal_alignment = 1
+text = "[ E ] Talk"
+theme_override_colors/font_color = Color(0.9, 1.0, 0.4, 1.0)
+theme_override_font_sizes/font_size = 11
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(640.0, 400.0)
+collision_layer = 2
+collision_mask = 1
+script = ExtResource("2_player")
+
+[node name="PlayerRect" type="ColorRect" parent="Player"]
+offset_left = -12.0
+offset_top = -36.0
+offset_right = 12.0
+offset_bottom = 10.0
+color = Color(0.2, 0.65, 0.25, 1.0)
+
+[node name="PlayerSprite" type="Sprite2D" parent="Player"]
+texture_filter = 1
+
+[node name="PlayerBody" type="CollisionShape2D" parent="Player"]
+shape = SubResource("ShapePlayer")
+
+[node name="LblPlayer" type="Label" parent="Player"]
+offset_left = -30.0
+offset_top = -56.0
+offset_right = 30.0
+offset_bottom = -40.0
+horizontal_alignment = 1
+text = "YOU"
+theme_override_colors/font_color = Color(0.4, 1.0, 0.4, 1.0)
+theme_override_font_sizes/font_size = 11
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="HUDControl" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="LeftPanel" type="VBoxContainer" parent="HUD/HUDControl"]
+layout_mode = 1
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 240.0
+offset_bottom = 340.0
+theme_override_constants/separation = 2
+
+[node name="LblEnergy" type="Label" parent="HUD/HUDControl/LeftPanel"]
+layout_mode = 2
+text = "ENERGY"
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1.0)
+theme_override_font_sizes/font_size = 13
+
+[node name="BarEnergy" type="ProgressBar" parent="HUD/HUDControl/LeftPanel"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 18)
+max_value = 100.0
+value = 100.0
+show_percentage = false
+
+[node name="LblDebt" type="Label" parent="HUD/HUDControl/LeftPanel"]
+layout_mode = 2
+text = "DEBT"
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1.0)
+theme_override_font_sizes/font_size = 13
+
+[node name="LblDebtVal" type="Label" parent="HUD/HUDControl/LeftPanel"]
+layout_mode = 2
+text = "Debt  $50000"
+theme_override_colors/font_color = Color(1.0, 0.4, 0.4, 1.0)
+theme_override_font_sizes/font_size = 13
+
+[node name="BarDebt" type="ProgressBar" parent="HUD/HUDControl/LeftPanel"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 18)
+max_value = 100.0
+value = 100.0
+show_percentage = false
+
+[node name="LblPaid" type="Label" parent="HUD/HUDControl/LeftPanel"]
+layout_mode = 2
+text = "PAID"
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1.0)
+theme_override_font_sizes/font_size = 13
+
+[node name="LblPaidVal" type="Label" parent="HUD/HUDControl/LeftPanel"]
+layout_mode = 2
+text = "Paid  $0"
+theme_override_colors/font_color = Color(0.3, 0.85, 1.0, 1.0)
+theme_override_font_sizes/font_size = 13
+
+[node name="BarPaid" type="ProgressBar" parent="HUD/HUDControl/LeftPanel"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 18)
+max_value = 100.0
+value = 0.0
+show_percentage = false
+
+[node name="LblMoney" type="Label" parent="HUD/HUDControl/LeftPanel"]
+layout_mode = 2
+text = "Cash  $0"
+theme_override_colors/font_color = Color(0.4, 1.0, 0.5, 1.0)
+theme_override_font_sizes/font_size = 15
+
+[node name="LblTime" type="Label" parent="HUD/HUDControl/LeftPanel"]
+layout_mode = 2
+text = "8:00 AM"
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1.0)
+theme_override_font_sizes/font_size = 14
+
+[node name="LblDay" type="Label" parent="HUD/HUDControl/LeftPanel"]
+layout_mode = 2
+text = "Day 1 / 7"
+theme_override_colors/font_color = Color(0.4, 0.85, 1.0, 1.0)
+theme_override_font_sizes/font_size = 16
+
+[node name="Tooltip" type="PanelContainer" parent="HUD/HUDControl"]
+layout_mode = 1
+anchor_left = 0.25
+anchor_top = 0.05
+anchor_right = 0.80
+anchor_bottom = 0.16
+visible = false
+
+[node name="LblTooltip" type="Label" parent="HUD/HUDControl/Tooltip"]
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+text = "Press [E] to interact"
+theme_override_colors/font_color = Color(1.0, 1.0, 0.7, 1.0)
+theme_override_font_sizes/font_size = 15

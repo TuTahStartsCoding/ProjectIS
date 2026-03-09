@@ -1,0 +1,65 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6jobselect"]
+
+[ext_resource type="Script" path="res://scripts/JobSelectUI.gd" id="1_jsel"]
+
+[node name="JobSelectUI" type="CanvasLayer"]
+script = ExtResource("1_jsel")
+
+[node name="Root" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BgPanel" type="Panel" parent="Root"]
+layout_mode = 1
+anchor_left = 0.0
+anchor_top = 0.42
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBox" type="VBoxContainer" parent="Root/BgPanel"]
+layout_mode = 1
+anchor_left = 0.015
+anchor_top = 0.04
+anchor_right = 0.985
+anchor_bottom = 0.96
+theme_override_constants/separation = 10
+
+[node name="HeaderRow" type="HBoxContainer" parent="Root/BgPanel/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="LblTitle" type="Label" parent="Root/BgPanel/VBox/HeaderRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Available Work"
+theme_override_colors/font_color = Color(1.0, 1.0, 1.0, 1.0)
+theme_override_font_sizes/font_size = 22
+
+[node name="LblDay" type="Label" parent="Root/BgPanel/VBox/HeaderRow"]
+layout_mode = 2
+size_flags_vertical = 4
+text = "Day 1/7"
+theme_override_colors/font_color = Color(0.4, 0.85, 1.0, 1.0)
+theme_override_font_sizes/font_size = 16
+
+[node name="LblEnergy" type="Label" parent="Root/BgPanel/VBox/HeaderRow"]
+layout_mode = 2
+size_flags_vertical = 4
+text = " 100%"
+theme_override_colors/font_color = Color(0.9, 1.0, 0.3, 1.0)
+theme_override_font_sizes/font_size = 16
+
+[node name="JobRow" type="HBoxContainer" parent="Root/BgPanel/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="BtnCancel" type="Button" parent="Root/BgPanel/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 34)
+text = "Leave"
+theme_override_font_sizes/font_size = 15
+theme_override_colors/font_color = Color(0.08, 0.08, 0.08, 1.0)

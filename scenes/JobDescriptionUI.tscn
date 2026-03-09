@@ -1,0 +1,138 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7jobdesc"]
+
+[ext_resource type="Script" path="res://scripts/JobDescriptionUI.gd" id="1_jdesc"]
+
+[node name="JobDescriptionUI" type="CanvasLayer"]
+script = ExtResource("1_jdesc")
+
+[node name="Root" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BG" type="ColorRect" parent="Root"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.03, 0.04, 0.09, 1.0)
+
+[node name="AccentLeft" type="ColorRect" parent="Root"]
+layout_mode = 1
+anchor_top = 0.0
+anchor_bottom = 1.0
+offset_right = 4.0
+color = Color(0.18, 0.65, 1.0, 1.0)
+
+[node name="MainVBox" type="VBoxContainer" parent="Root"]
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 72.0
+offset_top = 52.0
+offset_right = -72.0
+offset_bottom = -44.0
+theme_override_constants/separation = 20
+
+[node name="LblJobName" type="Label" parent="Root/MainVBox"]
+layout_mode = 2
+text = "Job Name"
+theme_override_colors/font_color = Color(0.28, 0.82, 1.0, 1.0)
+theme_override_font_sizes/font_size = 38
+modulate = Color(1, 1, 1, 0)
+
+[node name="LblAmount" type="Label" parent="Root/MainVBox"]
+layout_mode = 2
+text = "+$0"
+theme_override_colors/font_color = Color(0.32, 1.0, 0.52, 1.0)
+theme_override_font_sizes/font_size = 24
+modulate = Color(1, 1, 1, 0)
+
+[node name="Divider" type="ColorRect" parent="Root/MainVBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 2)
+color = Color(0.18, 0.65, 1.0, 0.35)
+modulate = Color(1, 1, 1, 0)
+
+[node name="LblFlavor" type="Label" parent="Root/MainVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+autowrap_mode = 3
+text = ""
+theme_override_colors/font_color = Color(0.82, 0.82, 0.82, 1.0)
+theme_override_font_sizes/font_size = 20
+modulate = Color(1, 1, 1, 0)
+
+[node name="LblEvent" type="Label" parent="Root/MainVBox"]
+layout_mode = 2
+autowrap_mode = 3
+visible = false
+text = ""
+theme_override_colors/font_color = Color(0.32, 1.0, 0.52, 1.0)
+theme_override_font_sizes/font_size = 19
+modulate = Color(1, 1, 1, 0)
+
+[node name="LblStats" type="Label" parent="Root/MainVBox"]
+layout_mode = 2
+text = ""
+theme_override_colors/font_color = Color(0.55, 0.55, 0.55, 1.0)
+theme_override_font_sizes/font_size = 16
+modulate = Color(1, 1, 1, 0)
+
+[node name="Spacer" type="Control" parent="Root/MainVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="StatusRow" type="HBoxContainer" parent="Root/MainVBox"]
+layout_mode = 2
+theme_override_constants/separation = 36
+modulate = Color(1, 1, 1, 0)
+
+[node name="LblEnergy" type="Label" parent="Root/MainVBox/StatusRow"]
+layout_mode = 2
+text = "Energy  100%"
+theme_override_colors/font_color = Color(0.92, 0.92, 0.40, 1.0)
+theme_override_font_sizes/font_size = 15
+
+[node name="LblMoney" type="Label" parent="Root/MainVBox/StatusRow"]
+layout_mode = 2
+text = "Cash  $0"
+theme_override_colors/font_color = Color(0.35, 1.0, 0.55, 1.0)
+theme_override_font_sizes/font_size = 15
+
+[node name="LblDebt" type="Label" parent="Root/MainVBox/StatusRow"]
+layout_mode = 2
+text = "Debt  $0"
+theme_override_colors/font_color = Color(1.0, 0.38, 0.38, 1.0)
+theme_override_font_sizes/font_size = 15
+
+[node name="BtnRow" type="HBoxContainer" parent="Root/MainVBox"]
+layout_mode = 2
+theme_override_constants/separation = 14
+modulate = Color(1, 1, 1, 0)
+
+[node name="BtnSave" type="Button" parent="Root/MainVBox/BtnRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+custom_minimum_size = Vector2(0, 54)
+text = "Save It  (+5% energy)"
+theme_override_font_sizes/font_size = 17
+theme_override_colors/font_color = Color(0.08, 0.08, 0.08, 1.0)
+
+[node name="BtnPay" type="Button" parent="Root/MainVBox/BtnRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+custom_minimum_size = Vector2(0, 54)
+text = "Pay Debt  (-5% energy)"
+theme_override_font_sizes/font_size = 17
+theme_override_colors/font_color = Color(0.08, 0.08, 0.08, 1.0)
+
+[node name="BtnMore" type="Button" parent="Root/MainVBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 44)
+text = "Keep Working"
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(0.08, 0.08, 0.08, 1.0)
+modulate = Color(1, 1, 1, 0)

@@ -1,0 +1,60 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8hotelprompt"]
+
+[ext_resource type="Script" path="res://scripts/HotelPromptUI.gd" id="1_hotel"]
+
+[node name="HotelPromptUI" type="CanvasLayer"]
+script = ExtResource("1_hotel")
+
+[node name="Root" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="Panel" type="Panel" parent="Root"]
+layout_mode = 1
+anchor_left = 0.30
+anchor_top = 0.28
+anchor_right = 0.70
+anchor_bottom = 0.72
+
+[node name="VBox" type="VBoxContainer" parent="Root/Panel"]
+layout_mode = 1
+anchor_left = 0.06
+anchor_top = 0.06
+anchor_right = 0.94
+anchor_bottom = 0.94
+theme_override_constants/separation = 16
+
+[node name="LblTitle" type="Label" parent="Root/Panel/VBox"]
+layout_mode = 2
+horizontal_alignment = 1
+text = "HOTEL"
+theme_override_colors/font_color = Color(0.0, 0.96, 0.88, 1.0)
+theme_override_font_sizes/font_size = 34
+
+[node name="LblInfo" type="Label" parent="Root/Panel/VBox"]
+layout_mode = 2
+autowrap_mode = 3
+horizontal_alignment = 1
+text = "Resting recovers 45–50% energy.\nThe day will advance to tomorrow.\nDebt interest will be applied overnight."
+theme_override_colors/font_color = Color(0.88, 0.88, 0.88, 1)
+theme_override_font_sizes/font_size = 16
+
+[node name="BtnRow" type="HBoxContainer" parent="Root/Panel/VBox"]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 18
+
+[node name="BtnRest" type="Button" parent="Root/Panel/VBox/BtnRow"]
+custom_minimum_size = Vector2(148, 52)
+text = "Rest & Sleep"
+theme_override_font_sizes/font_size = 17
+theme_override_colors/font_color = Color(0.08, 0.08, 0.08, 1)
+
+[node name="BtnCancel" type="Button" parent="Root/Panel/VBox/BtnRow"]
+custom_minimum_size = Vector2(100, 52)
+text = "Cancel"
+theme_override_font_sizes/font_size = 17
+theme_override_colors/font_color = Color(0.08, 0.08, 0.08, 1)

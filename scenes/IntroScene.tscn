@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://b3intro"]
+
+[ext_resource type="Script" uid="uid://bahpm4sv7ufq5" path="res://scripts/IntroScene.gd" id="1_intro"]
+
+[node name="IntroScene" type="Control" unique_id=1084980779]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_intro")
+
+[node name="BG" type="ColorRect" parent="." unique_id=982836131]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.08, 0.08, 0.1, 1)
+
+[node name="LblUI" type="Label" parent="." unique_id=1937270951]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 18.0
+offset_right = -18.0
+offset_bottom = 48.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "into_scene"
+horizontal_alignment = 2
+
+[node name="Panel" type="Panel" parent="." unique_id=765496324]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.04
+anchor_top = 0.08
+anchor_right = 0.96
+anchor_bottom = 0.92
+
+[node name="VBox" type="VBoxContainer" parent="Panel" unique_id=479472950]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.04
+anchor_top = 0.04
+anchor_right = 0.96
+anchor_bottom = 0.96
+theme_override_constants/separation = 18
+
+[node name="StoryBody" type="RichTextLabel" parent="Panel/VBox" unique_id=1010676770]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 19
+bbcode_enabled = true
+text = "[color=#dddddd]In the neon-drenched city of Neo-Bangkok, you woke up one morning to a debt of [color=#ff6b6b]$3000 - $10000[/color] — left behind by your late uncle's failed underground business deal.
+
+The loan sharks give you [color=#ffd93d]5 - 9 days[/color] to pay it all back. No extensions. No mercy.
+
+You must walk the rain-soaked streets, find work where you can, and manage your [color=#6bcb77]energy[/color] carefully. Push too hard and your body gives out. Wait too long and the debt grows.
+
+[color=#ffd93d] Controls [/color]
+[color=#4ecdc4]WASD / Arrow Keys[/color]  —  Move your character
+[color=#4ecdc4]E[/color]  —  Interact with NPCs and Hotel
+
+Walk to an [color=#ffaa00]NPC[/color] and press [color=#4ecdc4]E[/color] to find work.
+Walk to the [color=#00f5e9]HOTEL[/color] and press [color=#4ecdc4]E[/color] to rest and skip to the next day.[/color]"
+scroll_active = false
+
+[node name="LblClick" type="Label" parent="Panel/VBox" unique_id=281963977]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 0.65)
+theme_override_font_sizes/font_size = 17
+text = "[ Click or press any key to begin ]"
+horizontal_alignment = 1

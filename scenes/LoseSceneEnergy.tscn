@@ -1,0 +1,95 @@
+[gd_scene load_steps=2 format=3 uid="uid://b12loseenergy"]
+
+[ext_resource type="Script" path="res://scripts/LoseScene.gd" id="1_lose"]
+
+[node name="LoseSceneEnergy" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_lose")
+
+[node name="BG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.07, 0.07, 0.09, 1)
+
+[node name="LblUI" type="Label" parent="."]
+layout_mode = 1
+anchor_right = 1.0
+offset_top = 18.0
+offset_right = -18.0
+offset_bottom = 46.0
+grow_horizontal = 0
+horizontal_alignment = 2
+text = "Lose_scene: Energy depleted"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 18
+
+[node name="VBox" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchor_left = 0.10
+anchor_top = 0.06
+anchor_right = 0.90
+anchor_bottom = 0.94
+theme_override_constants/separation = 22
+
+[node name="LblTitle" type="Label" parent="VBox"]
+layout_mode = 2
+horizontal_alignment = 1
+text = "Out of Energy"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 52
+
+[node name="LblLine1" type="Label" parent="VBox"]
+layout_mode = 2
+horizontal_alignment = 1
+text = "Your energy has been depleted in this round."
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 21
+
+[node name="LblLine2" type="Label" parent="VBox"]
+layout_mode = 2
+horizontal_alignment = 1
+text = "You can't continue any further."
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 21
+
+[node name="LblLine3" type="Label" parent="VBox"]
+layout_mode = 2
+horizontal_alignment = 1
+text = "Take a moment to recharge and try again."
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 21
+
+[node name="LblLine4" type="Label" parent="VBox"]
+layout_mode = 2
+horizontal_alignment = 1
+text = "You'll come back stronger!"
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_font_sizes/font_size = 21
+
+[node name="Spacer" type="Control" parent="VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BtnReturn" type="Button" parent="VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(280, 58)
+size_flags_horizontal = 4
+text = "Return to homepage"
+theme_override_font_sizes/font_size = 21
+theme_override_colors/font_color = Color(0.08, 0.08, 0.08, 1)
+
+[node name="Spacer2" type="Control" parent="VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LblSub" type="Label" parent="VBox"]
+layout_mode = 2
+horizontal_alignment = 1
+text = "This isn't the end — recharge and rise again!"
+theme_override_colors/font_color = Color(0.75, 0.75, 0.75, 0.85)
+theme_override_font_sizes/font_size = 17

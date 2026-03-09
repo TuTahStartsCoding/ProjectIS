@@ -1,0 +1,145 @@
+[gd_scene format=3 uid="uid://dp0d3llqlnhe8"]
+
+[ext_resource type="Script" uid="uid://blge7ojitqogs" path="res://scripts/MainMenu.gd" id="1_mainmenu"]
+
+[node name="MainMenu" type="Control" unique_id=949154482]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mainmenu")
+
+[node name="BG" type="ColorRect" parent="." unique_id=461684119]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.04, 0.06, 0.12, 1)
+
+[node name="CityGlow" type="ColorRect" parent="." unique_id=1473444243]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.65
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0.1, 0.22, 0.55)
+
+[node name="Panel" type="Panel" parent="." unique_id=1734934987]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -320.0
+offset_right = 320.0
+offset_bottom = 330.0
+
+[node name="LblTitle" type="Label" parent="Panel" unique_id=2010639267]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 24.0
+offset_bottom = 100.0
+theme_override_colors/font_color = Color(0.3, 0.85, 1, 1)
+theme_override_font_sizes/font_size = 60
+text = "THE DEBT"
+horizontal_alignment = 1
+
+[node name="LblSub" type="Label" parent="Panel" unique_id=2126260016]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 100.0
+offset_bottom = 128.0
+theme_override_colors/font_color = Color(0.68, 0.68, 0.68, 1)
+theme_override_font_sizes/font_size = 16
+text = "Seven days. One city. Zero mercy."
+horizontal_alignment = 1
+
+[node name="LblDiffTitle" type="Label" parent="Panel" unique_id=1940198852]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 144.0
+offset_bottom = 166.0
+theme_override_colors/font_color = Color(0.55, 0.55, 0.55, 1)
+theme_override_font_sizes/font_size = 12
+text = "DIFFICULTY"
+horizontal_alignment = 1
+
+[node name="DiffRow" type="HBoxContainer" parent="Panel" unique_id=2102954878]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_right = 0.95
+offset_top = 168.0
+offset_bottom = 212.0
+theme_override_constants/separation = 10
+
+[node name="BtnEasy" type="Button" parent="Panel/DiffRow" unique_id=100337104]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+text = "Easy"
+
+[node name="BtnNormal" type="Button" parent="Panel/DiffRow" unique_id=384045827]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+text = "Normal"
+
+[node name="BtnHard" type="Button" parent="Panel/DiffRow" unique_id=311437079]
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+text = "Hard"
+
+[node name="LblDiffInfo" type="Label" parent="Panel" unique_id=1290449615]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 214.0
+offset_bottom = 238.0
+theme_override_colors/font_color = Color(0.75, 0.88, 0.6, 1)
+theme_override_font_sizes/font_size = 13
+text = "Debt: $50,000  ·  7 days  ·  100% energy  ·  5% interest/day"
+horizontal_alignment = 1
+
+[node name="VBox" type="VBoxContainer" parent="Panel" unique_id=1076698202]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.08
+anchor_right = 0.92
+offset_top = 248.0
+offset_bottom = 638.0
+theme_override_constants/separation = 14
+
+[node name="BtnStart" type="Button" parent="Panel/VBox" unique_id=1869168300]
+custom_minimum_size = Vector2(0, 58)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.08, 0.08, 0.08, 1)
+theme_override_font_sizes/font_size = 24
+text = "Start Game"
+
+[node name="BtnSetting" type="Button" parent="Panel/VBox" unique_id=864842533]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.08, 0.08, 0.08, 1)
+theme_override_font_sizes/font_size = 20
+text = "Settings"
+
+[node name="BtnExit" type="Button" parent="Panel/VBox" unique_id=728457667]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.08, 0.08, 0.08, 1)
+theme_override_font_sizes/font_size = 20
+text = "Exit"

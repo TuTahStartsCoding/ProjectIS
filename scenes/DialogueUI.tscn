@@ -1,0 +1,103 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5dialogue"]
+
+[ext_resource type="Script" path="res://scripts/DialogueUI.gd" id="1_dlg"]
+
+[node name="DialogueUI" type="CanvasLayer"]
+script = ExtResource("1_dlg")
+
+[node name="Root" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BgPanel" type="Panel" parent="Root"]
+layout_mode = 1
+anchor_left = 0.0
+anchor_top = 0.60
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="HBox" type="HBoxContainer" parent="Root/BgPanel"]
+layout_mode = 1
+anchor_left = 0.01
+anchor_top = 0.05
+anchor_right = 0.99
+anchor_bottom = 0.97
+theme_override_constants/separation = 16
+
+[node name="P1Avatar" type="Panel" parent="Root/BgPanel/HBox"]
+custom_minimum_size = Vector2(96, 96)
+size_flags_vertical = 4
+pivot_offset = Vector2(48, 48)
+
+[node name="LblP1" type="Label" parent="Root/BgPanel/HBox/P1Avatar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+horizontal_alignment = 1
+vertical_alignment = 1
+text = "YOU"
+theme_override_colors/font_color = Color(1.0, 1.0, 1.0, 1.0)
+theme_override_font_sizes/font_size = 16
+
+[node name="DimOverlay" type="ColorRect" parent="Root/BgPanel/HBox/P1Avatar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.0, 0.0, 0.0, 0.0)
+mouse_filter = 2
+
+[node name="TextVBox" type="VBoxContainer" parent="Root/BgPanel/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 6
+
+[node name="LblSpeaker" type="Label" parent="Root/BgPanel/HBox/TextVBox"]
+layout_mode = 2
+text = "NPC Name"
+theme_override_colors/font_color = Color(0.3, 0.85, 1.0, 1.0)
+theme_override_font_sizes/font_size = 14
+
+[node name="LblText" type="Label" parent="Root/BgPanel/HBox/TextVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+autowrap_mode = 3
+text = "..."
+theme_override_colors/font_color = Color(0.93, 0.93, 0.93, 1.0)
+theme_override_font_sizes/font_size = 19
+
+[node name="LblHint" type="Label" parent="Root/BgPanel/HBox/TextVBox"]
+layout_mode = 2
+horizontal_alignment = 2
+text = "[ E ] Continue"
+theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 0.75)
+theme_override_font_sizes/font_size = 13
+
+[node name="NPCAvatar" type="Panel" parent="Root/BgPanel/HBox"]
+custom_minimum_size = Vector2(96, 96)
+size_flags_vertical = 4
+pivot_offset = Vector2(48, 48)
+
+[node name="LblNPC" type="Label" parent="Root/BgPanel/HBox/NPCAvatar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+horizontal_alignment = 1
+vertical_alignment = 1
+text = "NPC"
+theme_override_colors/font_color = Color(1.0, 1.0, 1.0, 1.0)
+theme_override_font_sizes/font_size = 15
+
+[node name="DimOverlay" type="ColorRect" parent="Root/BgPanel/HBox/NPCAvatar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.0, 0.0, 0.0, 0.0)
+mouse_filter = 2
